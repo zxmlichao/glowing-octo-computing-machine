@@ -6,7 +6,8 @@ library(usethis)
 usethis::create_github_token()
 
 #set up token
-credentials::set_github_pat()
+credentials::set_github_pat(TRUE)
+
 
 use_git_config(user.name = "zxmlichao", user.email = "zxmlichao@gmail.com")
 
