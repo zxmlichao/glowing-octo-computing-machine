@@ -1,20 +1,21 @@
 ---
 title: "R Notebook"
 output: html_notebook
-
 ---
+#install usethis
 
-This is import process
+library(usethis)
 
-```{r}
-library(tidyverse)
-library(plotly)
+#create github token
+usethis::create_github_token()
 
-library(readr)
-simulated_patient_data <- read_csv("https://raw.githubusercontent.com/philbowsher/Foundation-of-the-R-Workflow-workshop-2019-09-06/master/Examples/data/simulated_patient_data.csv")
-simulated_patient_data
+#set up token
+credentials::set_github_pat(TRUE)
 
-```
+
+use_git_config(user.name = "zxmlichao", user.email = "zxmlichao@gmail.com")
+
+
 
 This is data viz
 
@@ -45,5 +46,10 @@ ggplotly(p)
 
 
 ```{r}
+library(dygraphs)
+dygraph(nhtemp, main = "New Haven Temperatures") %>% 
+  dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
 ```
 
+
+rsconnect::writeManifest()
