@@ -11,8 +11,41 @@ credentials::set_github_pat(TRUE)
 
 use_git_config(user.name = "zxmlichao", user.email = "zxmlichao@gmail.com")
 
+
+
+This is data viz
+
+```{r}
+simulated_patient_data %>%
+ filter(birthdate >= "1965-02-17" & birthdate <= "2020-11-09") %>%
+ 
+    filter(marital %in% "S" | is.na(marital)) %>%
+ ggplot() +
+ aes(x = race, fill = gender) +
+ geom_bar() +
+ scale_fill_hue() +
+ theme_minimal()
+```
+
+interactive data viz
+
+```{r}
+library(ggplot2)
+library(plotly)
+p <- ggplot(data = diamonds, aes(x = cut, fill = clarity)) +
+            geom_bar(position = "dodge")
+ggplotly(p)
+ggplotly(p)
+
+
+```
+
+
+```{r}
 library(dygraphs)
 dygraph(nhtemp, main = "New Haven Temperatures") %>% 
   dyRangeSelector(dateWindow = c("1920-01-01", "1960-01-01"))
+```
+
 
 rsconnect::writeManifest()
